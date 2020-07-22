@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backgroud_home"
+    tools:context=".ManagementActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/function" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chức năng chính"
+            android:textColor="@color/colorTextButton"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnDanhMuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/danhmuc"
+            android:background="@color/colorBgButton"
+            android:textColor="@color/colorTextButton"/>
+
+        <Button
+            android:id="@+id/btnSanPham"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/sanpham"
+            android:background="@color/colorBgButton"
+            android:textColor="@color/colorTextButton"/>
+
+        <Button
+            android:id="@+id/btnKhoHang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/khohang"
+            android:background="@color/colorBgButton"
+            android:textColor="@color/colorTextButton"/>
+        <Button
+            android:id="@+id/btnHoaDon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hoadon"
+            android:background="@color/colorBgButton"
+            android:textColor="@color/colorTextButton"/>
+    </LinearLayout>
+</LinearLayout>
