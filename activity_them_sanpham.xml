@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layoutSanPham"
+    tools:context=".ThemSanPham">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_ID"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tenSP2" />
+
+            <EditText
+                android:id="@+id/txtTenSP_ThemSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_Name"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="@string/danhmucSP2" />
+
+            <Spinner
+                android:id="@+id/spinnerDM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_giasp_list"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="@string/soluongSP2" />
+
+            <EditText
+                android:id="@+id/txtSoluong_ThemSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_tensp_list"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="@string/giaSP2" />
+
+            <EditText
+                android:id="@+id/txtGiaca_ThemSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_tensp_description"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="@string/motaSP2" />
+
+            <EditText
+                android:id="@+id/txtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/ibnCamera"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/camera" />
+
+        <Button
+            android:id="@+id/ibnFolder"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/folder" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/imgHinh"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/image" />
+
+        <Button
+            android:id="@+id/btnLuu_ThemSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FF9900"
+            android:text="@string/btn_save"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:width="120dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center|left"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back" />
+    </LinearLayout>
+</LinearLayout>
