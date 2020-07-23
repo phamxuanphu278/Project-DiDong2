@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuLogout"
+        android:icon="@drawable/logout"
+        android:title="@string/logout"
+        app:showAsAction="ifRoom"
+        >
+    </item>
+    <item
+        android:id="@+id/menuHuawei"
+        android:icon="@drawable/huawei"
+        android:title="@string/huawei"
+        app:showAsAction="never"
+        >
+    </item>
+    <item
+        android:id="@+id/menuIphone"
+        android:icon="@drawable/iphone"
+        android:title="@string/iphone"
+        app:showAsAction="never"
+        >
+    </item>
+    <item
+        android:id="@+id/menuSamsung"
+        android:icon="@drawable/samsung"
+        android:title="@string/samsung"
+        app:showAsAction="never"
+        >
+    </item>
+</menu>

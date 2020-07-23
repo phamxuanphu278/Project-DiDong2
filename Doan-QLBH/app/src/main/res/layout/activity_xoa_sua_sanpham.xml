@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".XoaSuaSanPham">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/qlSanPham"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tenSP2"
+                android:textColor="@color/colorEdit"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/edtTenSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="@string/danhmucSP2"
+                android:textColor="@color/colorEdit"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spinnerDanhMucSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="@string/soluongSP2"
+                android:textColor="@color/colorEdit"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edtSoluongSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="@string/giaSP2"
+                android:textColor="@color/colorEdit"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/edtGiaSanPham"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="@string/motaSP2"
+                android:textColor="@color/colorEdit"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/edtMotaSP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/ibnCamera"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/camera" />
+
+            <Button
+                android:id="@+id/ibnFolder"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/folder" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/imgHinh_EditSP"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:src="@drawable/image" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBgButton"
+                android:textColor="@color/colorTextButton"
+                android:layout_marginRight="15dp"
+                android:text="@string/xoa"
+                android:textStyle="bold"/>
+            <Button
+                android:id="@+id/btnEditSP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBgButton"
+                android:textColor="@color/colorTextButton"
+                android:text="@string/sua"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center|left"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back" />
+    </LinearLayout>
+
+
+</LinearLayout>
