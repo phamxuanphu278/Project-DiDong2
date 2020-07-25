@@ -7,6 +7,10 @@ public class DanhMuc {
         super();
         this.tenDM = tenDM;
     }
+
+    public DanhMuc() {
+    }
+
     public DanhMuc(int maDM, String tenDM) {
         super();
         this.maDM = maDM;

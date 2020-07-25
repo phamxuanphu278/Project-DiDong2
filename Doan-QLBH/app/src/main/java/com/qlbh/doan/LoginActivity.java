@@ -17,7 +17,6 @@ public class LoginActivity extends AppCompatActivity {
     Button btnDangKy;
     EditText edtUsername;
     EditText edtPassword;
-    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String taikhoan = edtUsername.getText().toString();
                 String matkhau = edtPassword.getText().toString();
-                mDatabase = FirebaseDatabase.getInstance().getReference();
             }
         });
     }
