@@ -58,6 +58,7 @@ public class DanhMucActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                adapter.notifyDataSetChanged();
                 lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, final int position, final long id) {
@@ -67,7 +68,7 @@ public class DanhMucActivity extends AppCompatActivity {
                         dialog.setPositiveButton("XÓA", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                   
+
                             }
                         }).setNegativeButton("HỦY", null).show();
                     }

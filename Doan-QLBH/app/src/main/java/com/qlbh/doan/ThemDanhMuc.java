@@ -68,6 +68,7 @@ public class ThemDanhMuc extends AppCompatActivity {
                     Intent intent = new Intent(ThemDanhMuc.this, DanhMucActivity.class);
                     startActivity(intent);
                     edtThemDM.setText("");
+                    edtMaDanhMuc.setText("");
                 }
             }
         });
