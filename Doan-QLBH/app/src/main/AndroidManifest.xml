@@ -12,9 +12,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".HoaDonActivity"></activity>
         <activity android:name=".DatHangActivity" />
-        <activity android:name=".SamsungActivity" />
-        <activity android:name=".IphoneActivity" />
-        <activity android:name=".HuaweiActivity" />
         <activity android:name=".ProductInformation" />
         <activity android:name=".KhoHangActivity" />
         <activity android:name=".XoaSuaSanPham" />

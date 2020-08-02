@@ -3,13 +3,14 @@ package com.qlbh.doan.model;
 import java.io.Serializable;
 
 public class SanPham implements Serializable {
-    private int mMaSP;
+    private String mMaSP;
     private String mTenSP;
     private String mDanhMuc;
     private int mSoLuong;
     private int mGiaban;
     private  String mMota;
     private byte[] mAnh;
+    private String imgURL;
     public SanPham() {
         super();
     }
@@ -20,7 +21,8 @@ public class SanPham implements Serializable {
         this.mSoLuong = mSoLuong;
     }
 
-    public SanPham(int mMaSP, String mTenSP, String mDanhMuc, int mSoLuong, int mGiaban, String mMota, byte[] mAnh) {
+
+    public SanPham(String mMaSP, String mTenSP, String mDanhMuc, int mSoLuong, int mGiaban, String mMota, byte[] mAnh) {
         this.mMaSP = mMaSP;
         this.mTenSP = mTenSP;
         this.mDanhMuc = mDanhMuc;
@@ -29,7 +31,7 @@ public class SanPham implements Serializable {
         this.mMota = mMota;
         this.mAnh = mAnh;
     }
-    public SanPham(int mMaSP, String mTenSP, String mDanhMuc, int mSoLuong,
+    public SanPham(String mMaSP, String mTenSP, String mDanhMuc, int mSoLuong,
                    int mGiaban, byte[] mAnh) {
         super();
         this.mMaSP = mMaSP;
@@ -40,11 +42,19 @@ public class SanPham implements Serializable {
         this.mAnh = mAnh;
     }
 
-    public int getmMaSP() {
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
+
+    public String getmMaSP() {
         return mMaSP;
     }
 
-    public void setmMaSP(int mMaSP) {
+    public void setmMaSP(String mMaSP) {
         this.mMaSP = mMaSP;
     }
 
