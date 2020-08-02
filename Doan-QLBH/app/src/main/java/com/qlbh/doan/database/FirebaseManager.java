@@ -2,6 +2,7 @@ package com.qlbh.doan.database;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+<<<<<<< HEAD
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+=======
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+>>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,13 +25,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+<<<<<<< HEAD
 import com.google.firebase.storage.UploadTask;
+=======
+>>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
 import com.qlbh.doan.model.DanhMuc;
 import com.qlbh.doan.model.HoaDon;
 import com.qlbh.doan.model.SanPham;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.UUID;
+=======
+>>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
 
 public class FirebaseManager {
     public static final String DANH_MUC = "DANH_MUC";
@@ -49,6 +63,7 @@ public class FirebaseManager {
         arraySanpham = new ArrayList<>();
         arrayHoaDon = new ArrayList<>();
     }
+<<<<<<< HEAD
 
     public ArrayList<DanhMuc> getArrDM() {
         return arrDM;
@@ -74,6 +89,8 @@ public class FirebaseManager {
         this.arrayHoaDon = arrayHoaDon;
     }
 
+=======
+>>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
     public void showLoading(boolean isShow){
         if(dialog != null){
             if(isShow){
@@ -111,6 +128,12 @@ public class FirebaseManager {
             }
         });
     }
+<<<<<<< HEAD
+=======
+    public ArrayList<DanhMuc> getArrDM() {
+        return arrDM;
+    }
+>>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
     public void loadDSDanhMuc(final IListener listener){
         showLoading(true);
         mDatabase.child(DANH_MUC).addValueEventListener(new ValueEventListener() {
@@ -147,6 +170,7 @@ public class FirebaseManager {
             }
         });
     }
+<<<<<<< HEAD
     public void uploadFile(Uri uri, final IListenerUploadFile listener){
         showLoading(true);
         final StorageReference reference = storageReference.child("Anh/" + UUID.randomUUID().toString());
@@ -237,4 +261,6 @@ public class FirebaseManager {
             }
         });
     }
+=======
+>>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
 }

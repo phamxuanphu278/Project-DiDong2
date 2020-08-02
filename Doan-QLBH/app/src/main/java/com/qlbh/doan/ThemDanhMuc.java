@@ -49,12 +49,23 @@ public class ThemDanhMuc extends AppCompatActivity {
                             edtThemDM.setText("");
                             edtThemDM.requestFocus();
                         }
+<<<<<<< HEAD
                         @Override
                         public void onFail() {
 
                         }
                     });
+=======
+
+                        @Override
+                        public void onFail() {
+
+                        }
+                    });
+
+>>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
                 }
+
             }
         });
 
