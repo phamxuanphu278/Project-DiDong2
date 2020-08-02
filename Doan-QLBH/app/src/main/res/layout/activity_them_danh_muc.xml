@@ -21,16 +21,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/madanhmuc"/>
-        <EditText
-            android:id="@+id/edtMaDanhMuc"
-            android:hint="@string/nhapmadanhmuc"
-            android:layout_width="match_parent"
-            android:inputType="number"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/tendanhmuc"/>
         <EditText

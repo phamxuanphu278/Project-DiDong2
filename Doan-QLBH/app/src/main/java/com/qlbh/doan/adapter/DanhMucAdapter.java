@@ -30,7 +30,7 @@ public class DanhMucAdapter extends ArrayAdapter<DanhMuc> {
             TextView txtTen = view.findViewById(R.id.tvTen);
             TextView txtId = view.findViewById(R.id.tvId);
             txtTen.setText(dm.getTenDM());
-            txtId.setText(String.valueOf(dm.getMaDM()));
+            txtId.setText(position+1+"");
         }
         return view;
     }

@@ -1,7 +1,7 @@
 package com.qlbh.doan.model;
 
 public class DanhMuc {
-    private int maDM;
+    private String maDM;
     private String tenDM;
     public DanhMuc(String tenDM) {
         super();
@@ -11,16 +11,16 @@ public class DanhMuc {
     public DanhMuc() {
     }
 
-    public DanhMuc(int maDM, String tenDM) {
+    public DanhMuc(String maDM, String tenDM) {
         super();
         this.maDM = maDM;
         this.tenDM = tenDM;
     }
-    public int getMaDM() {
+    public String getMaDM() {
         return maDM;
     }
 
-    public void setMaDM(int maDM) {
+    public void setMaDM(String maDM) {
         this.maDM = maDM;
     }
 
