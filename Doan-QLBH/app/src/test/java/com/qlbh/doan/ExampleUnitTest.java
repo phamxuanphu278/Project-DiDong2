@@ -1,4 +1,4 @@
-package com.doan.qlbh;
+package com.qlbh.doan;
 
 import org.junit.Test;
 

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.bumptech.glide.Glide;
 import com.qlbh.doan.R;
 import com.qlbh.doan.model.SanPham;
 
@@ -35,9 +36,7 @@ public class SanPhamAdapter extends ArrayAdapter<SanPham> {
             TextView txtSoluong = view.findViewById(R.id.lv_Soluong);
             TextView txtGia = view.findViewById(R.id.tv_giasp_list);
             TextView txtDanhmuc = view.findViewById(R.id.lv_Danhmuc);
-            byte[] hinhAnh = sanpham.getmAnh();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
-            imgHinhdaidien.setImageBitmap(bitmap);
+            Glide.with(getContext()).load(sanpham.getImgURL()).into(imgHinhdaidien);
             txtTen.setText(sanpham.getmTenSP());
             txtSoluong.setText(String.valueOf(sanpham.getmSoLuong()));
             txtGia.setText(String.valueOf(sanpham.getmGiaban()));

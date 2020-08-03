@@ -1,7 +1,7 @@
 package com.qlbh.doan.model;
 
 public class HoaDon {
-    private int maHoaDon;
+    private String maHoaDon;
     private String tenSP;
     private int soLuong;
     private int giaSP;
@@ -12,11 +12,11 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public int getMaHoaDon() {
+    public String getMaHoaDon() {
         return maHoaDon;
     }
 
-    public void setMaHoaDon(int maHoaDon) {
+    public void setMaHoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
     }
 
@@ -29,7 +29,7 @@ public class HoaDon {
         this.adress = adress;
     }
 
-    public HoaDon(int maHoaDon, String tenSP, int soLuong, int giaSP, String tenKH, String numberPhone, String adress) {
+    public HoaDon(String maHoaDon, String tenSP, int soLuong, int giaSP, String tenKH, String numberPhone, String adress) {
         this.maHoaDon = maHoaDon;
         this.tenSP = tenSP;
         this.soLuong = soLuong;

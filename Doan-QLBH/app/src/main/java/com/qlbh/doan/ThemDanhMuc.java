@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.FirebaseDatabase;
+import com.qlbh.doan.database.DatabaseManager;
 import com.qlbh.doan.database.FirebaseManager;
 import com.qlbh.doan.model.DanhMuc;
 
