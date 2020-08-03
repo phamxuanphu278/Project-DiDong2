@@ -2,7 +2,6 @@ package com.qlbh.doan.database;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-<<<<<<< HEAD
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
@@ -11,13 +10,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-=======
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
->>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,19 +17,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-<<<<<<< HEAD
 import com.google.firebase.storage.UploadTask;
-=======
->>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
 import com.qlbh.doan.model.DanhMuc;
 import com.qlbh.doan.model.HoaDon;
 import com.qlbh.doan.model.SanPham;
+import com.qlbh.doan.model.Users;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.UUID;
-=======
->>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
 
 public class FirebaseManager {
     public static final String DANH_MUC = "DANH_MUC";
@@ -63,34 +50,7 @@ public class FirebaseManager {
         arraySanpham = new ArrayList<>();
         arrayHoaDon = new ArrayList<>();
     }
-<<<<<<< HEAD
 
-    public ArrayList<DanhMuc> getArrDM() {
-        return arrDM;
-    }
-
-    public void setArrDM(ArrayList<DanhMuc> arrDM) {
-        this.arrDM = arrDM;
-    }
-
-    public ArrayList<SanPham> getArraySanpham() {
-        return arraySanpham;
-    }
-
-    public void setArraySanpham(ArrayList<SanPham> arraySanpham) {
-        this.arraySanpham = arraySanpham;
-    }
-
-    public ArrayList<HoaDon> getArrayHoaDon() {
-        return arrayHoaDon;
-    }
-
-    public void setArrayHoaDon(ArrayList<HoaDon> arrayHoaDon) {
-        this.arrayHoaDon = arrayHoaDon;
-    }
-
-=======
->>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
     public void showLoading(boolean isShow){
         if(dialog != null){
             if(isShow){
@@ -102,15 +62,7 @@ public class FirebaseManager {
             }
         }
     }
-    public interface IListener{
-        void onSuccess();
-        void onFail();
-    }
 
-    public interface IListenerUploadFile{
-        void onSuccess(String url);
-        void onFail();
-    }
     public void themDanhMuc(DanhMuc danhMuc, final IListener listener){
         showLoading(true);
         String id = mDatabase.child(DANH_MUC).push().getKey();
@@ -128,12 +80,7 @@ public class FirebaseManager {
             }
         });
     }
-<<<<<<< HEAD
-=======
-    public ArrayList<DanhMuc> getArrDM() {
-        return arrDM;
-    }
->>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
+
     public void loadDSDanhMuc(final IListener listener){
         showLoading(true);
         mDatabase.child(DANH_MUC).addValueEventListener(new ValueEventListener() {
@@ -155,6 +102,7 @@ public class FirebaseManager {
             }
         });
     }
+
     public void xoaDanhMuc(String id, final IListener listener){
         showLoading(true);
         mDatabase.child(DANH_MUC).child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -170,7 +118,7 @@ public class FirebaseManager {
             }
         });
     }
-<<<<<<< HEAD
+
     public void uploadFile(Uri uri, final IListenerUploadFile listener){
         showLoading(true);
         final StorageReference reference = storageReference.child("Anh/" + UUID.randomUUID().toString());
@@ -224,6 +172,7 @@ public class FirebaseManager {
             }
         });
     }
+
     public void updateSanPham(String id, SanPham sanPham, final IListener listener){
         showLoading(true);
         mDatabase.child(SAN_PHAM).child(id).setValue(sanPham).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -261,6 +210,164 @@ public class FirebaseManager {
             }
         });
     }
-=======
->>>>>>> 31f553b1dfe5f3824e2a0ef8bf125df90f3a3099
+
+    public void xoaSanPham(String id, final IListener listener){
+        showLoading(true);
+        mDatabase.child(SAN_PHAM).child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                listener.onSuccess();
+                showLoading(false);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                listener.onFail();
+            }
+        });
+    }
+
+    public int getTongGiaTriHangHoa() {
+        int tongGiaTri = 0;
+        for (SanPham sp : arraySanpham){
+            tongGiaTri += (sp.getmGiaban()*sp.getmSoLuong());
+        }
+        return tongGiaTri;
+    }
+
+    public void loadHoaDon(final IListener listener){
+        showLoading(true);
+        arrayHoaDon.clear();
+        mDatabase.child(HOA_DON).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                HoaDon hoaDon;
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    hoaDon = ds.getValue(HoaDon.class);
+                    arrayHoaDon.add(hoaDon);
+                }
+                listener.onSuccess();
+                showLoading(false);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onFail();
+            }
+        });
+    }
+
+    public void themHoaDon(HoaDon hoaDon,final IListener listener){
+        showLoading(true);
+        String id = mDatabase.child(HOA_DON).push().getKey();
+        hoaDon.setMaHoaDon(id);
+        mDatabase.child(HOA_DON).child(hoaDon.getMaHoaDon()).setValue(hoaDon).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                listener.onSuccess();
+                showLoading(false);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                listener.onFail();
+            }
+        });
+    }
+
+    public void huyDonHang(String id, final IListener listener){
+        showLoading(true);
+        mDatabase.child(HOA_DON).child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                listener.onSuccess();
+                showLoading(false);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                listener.onFail();
+            }
+        });
+    }
+
+    public void registerUser(Users users, final IListener listener){
+        showLoading(true);
+        String id = mDatabase.child(USER).push().getKey();
+        users.setId(id);
+        mDatabase.child(USER).child(users.getId()).setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                listener.onSuccess();
+                showLoading(false);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                listener.onFail();
+            }
+        });
+    }
+
+    public void checkLogin(final String username, final String password, final IListener listener){
+        showLoading(true);
+        mDatabase.child(USER).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Users users;
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    users = ds.getValue(Users.class);
+                    if(users.getUser().equals(username) && users.getPassword().equals(password)){
+                        listener.onSuccess();
+                        break;
+                    }else {
+                        listener.onFail();
+                        break;
+                    }
+                }
+                showLoading(false);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onFail();
+            }
+        });
+    }
+
+
+    public interface IListener{
+        void onSuccess();
+        void onFail();
+    }
+
+    public interface IListenerUploadFile{
+        void onSuccess(String url);
+        void onFail();
+    }
+
+    public ArrayList<SanPham> getArraySanpham() {
+        return arraySanpham;
+    }
+
+    public void setArraySanpham(ArrayList<SanPham> arraySanpham) {
+        this.arraySanpham = arraySanpham;
+    }
+
+    public ArrayList<DanhMuc> getArrDM() {
+        return arrDM;
+    }
+
+    public void setArrDM(ArrayList<DanhMuc> arrDM) {
+        this.arrDM = arrDM;
+    }
+
+    public ArrayList<HoaDon> getArrayHoaDon() {
+        return arrayHoaDon;
+    }
+
+    public void setArrayHoaDon(ArrayList<HoaDon> arrayHoaDon) {
+        this.arrayHoaDon = arrayHoaDon;
+    }
 }
+

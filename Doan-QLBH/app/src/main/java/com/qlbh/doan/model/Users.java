@@ -1,6 +1,7 @@
 package com.qlbh.doan.model;
 
 public class Users {
+    private String id;
     private String user;
     private String password;
     private String fullName;
@@ -10,12 +11,21 @@ public class Users {
     public Users() {
     }
 
-    public Users(String user, String password, String fullName, String adress, String numberPhone) {
+    public Users(String id, String user, String password, String fullName, String adress, String numberPhone) {
         this.user = user;
         this.password = password;
         this.fullName = fullName;
         this.adress = adress;
         this.numberPhone = numberPhone;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUser() {

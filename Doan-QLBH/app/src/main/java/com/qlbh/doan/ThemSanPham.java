@@ -22,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.qlbh.doan.database.DatabaseManager;
 import com.qlbh.doan.database.FirebaseManager;
 import com.qlbh.doan.model.DanhMuc;
 import com.qlbh.doan.model.SanPham;

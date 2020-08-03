@@ -3,14 +3,14 @@ package com.qlbh.doan.model;
 public class DanhMuc {
     private String maDM;
     private String tenDM;
-    public DanhMuc(String tenDM) {
-        super();
-        this.tenDM = tenDM;
-    }
 
     public DanhMuc() {
     }
 
+    public DanhMuc(String tenDM) {
+        super();
+        this.tenDM = tenDM;
+    }
     public DanhMuc(String maDM, String tenDM) {
         super();
         this.maDM = maDM;
@@ -30,5 +30,10 @@ public class DanhMuc {
 
     public void setTenDM(String tenDM) {
         this.tenDM = tenDM;
+    }
+
+    @Override
+    public String toString() {
+        return tenDM;
     }
 }

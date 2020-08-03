@@ -30,8 +30,6 @@
     <string name="tendanhmuc">Tên danh mục</string>
     <string name="themdanhmuc">Thêm danh mục</string>
     <string name="nhaptendanhmuc">Nhập tên danh mục...</string>
-    <string name="madanhmuc">Mã danh mục</string>
-    <string name="nhapmadanhmuc">Nhập mã danh mục...</string>
     <string name="tenSP">Tên: </string>
     <string name="soluongSP">Số lượng: </string>
     <string name="giaSP">Giá: </string>
