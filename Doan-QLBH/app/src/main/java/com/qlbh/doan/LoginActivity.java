@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.qlbh.doan.database.DatabaseManager;
 import com.qlbh.doan.database.FirebaseManager;
 
 public class LoginActivity extends AppCompatActivity {
@@ -46,48 +48,45 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (taikhoan.equalsIgnoreCase("admin") && matkhau.equalsIgnoreCase("admin")){
-                    Intent intent = new Intent(LoginActivity.this,ManagementActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(intent);
 
-                    clearForm();
-                }
-                if(matkhau.length() == 0){
+                else if(matkhau.length() == 0){
                     Toast.makeText(LoginActivity.this, "Vui lòng nhập Password",
                             Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                if(taikhoan.length() < 5 || matkhau.length() <5){
+                else if(taikhoan.length() < 5 || matkhau.length() <5){
                     Toast.makeText(LoginActivity.this, "Nhập username và password ít nhất 5 ký tự!",
                             Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                DAO.checkLogin(taikhoan, matkhau, new FirebaseManager.IListener() {
-                    @Override
-                    public void onSuccess() {
-                        Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(intent);
-                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
-                        clearForm();
-                    }
-
-                    @Override
-                    public void onFail() {
-                        String taikhoan = edtUsername.getText().toString();
-                        String matkhau = edtPassword.getText().toString();
-                        if (taikhoan == "admin" && matkhau== "admin") {
+                else if(taikhoan.equals("admin") && matkhau.equals("admin")) {
+                    Intent intent = new Intent(LoginActivity.this, ManagementActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivity(intent);
+                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
+                    clearForm();
+                    return;
+                }
+                else {
+                    DAO.checkLogin(taikhoan, matkhau, new FirebaseManager.IListener() {
+                        @Override
+                        public void onSuccess() {
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            startActivity(intent);
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
+                            clearForm();
                         }
-                        else {
+
+                        @Override
+                        public void onFail() {
                             Toast.makeText(LoginActivity.this, "Tài khoản hoặc mật khẩu không đúng, hãy kiểm tra lại.",
                                     Toast.LENGTH_LONG).show();
                         }
-                    }
-                });
+                    });
+                }
             }
         });
     }

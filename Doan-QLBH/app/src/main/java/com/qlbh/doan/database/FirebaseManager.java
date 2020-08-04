@@ -190,11 +190,13 @@ public class FirebaseManager {
     }
 
     public void loadSanPham(final IListener listener){
+        //Bắt đầu gọi dữ liệu
         showLoading(true);
         arraySanpham.clear();
         mDatabase.child(SAN_PHAM).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Hứng dữ liệu khi firebase trả về
                 SanPham sanPham;
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     sanPham = ds.getValue(SanPham.class);
@@ -263,6 +265,7 @@ public class FirebaseManager {
             }
         });
     }
+
     public void themHoaDon(HoaDon hoaDon,final IListener listener){
         showLoading(true);
         String id = mDatabase.child(HOA_DON).push().getKey();
@@ -325,9 +328,6 @@ public class FirebaseManager {
                     users = ds.getValue(Users.class);
                     if(users.getUser().equals(username) && users.getPassword().equals(password)){
                         listener.onSuccess();
-                        break;
-                    }else {
-                        listener.onFail();
                         break;
                     }
                 }
