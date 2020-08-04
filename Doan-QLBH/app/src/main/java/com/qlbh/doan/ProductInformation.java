@@ -26,7 +26,6 @@ public class ProductInformation extends AppCompatActivity {
     Button btnOrder;
     DatabaseManager db;
     TextView spn;
-    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +63,7 @@ public class ProductInformation extends AppCompatActivity {
             Glide.with(this).load(sanpham.getImgURL()).into(imgAvatar);
             edtTen.setText(sanpham.getmTenSP());
             spn.setText(sanpham.getmDanhMuc());
-            edtGia.setText(String.valueOf(sanpham.getmGiaban()));
+            edtGia.setText(String.valueOf(sanpham.getmGiaban()) + "$");
             edtMota.setText(sanpham.getmMota());
         }
     }

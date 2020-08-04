@@ -36,14 +36,14 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
             TextView txtTongTien = view.findViewById(R.id.txtTongtien);
             txtMaHD.setText("MAHD" + String.valueOf(position+1));
             txtTenSP.setText(hoaDon.getTenSP());
-            txtGiaSP.setText(String.valueOf(hoaDon.getGiaSP()));
             txtSoluongSP.setText(String.valueOf(hoaDon.getSoLuong()));
+            txtGiaSP.setText(String.valueOf(hoaDon.getGiaSP()) + "$");
             txtTenKH.setText(hoaDon.getTenKH());
             txtSoDT.setText(hoaDon.getNumberPhone());
             txtDiaChi.setText(hoaDon.getAdress());
             int A = Integer.parseInt(String.valueOf(hoaDon.getGiaSP()));
             int B = Integer.parseInt(String.valueOf(hoaDon.getSoLuong()));
-            txtTongTien.setText(String.valueOf(A * B));
+            txtTongTien.setText(String.valueOf(A * B) + "$");
         }
         return view;
     }

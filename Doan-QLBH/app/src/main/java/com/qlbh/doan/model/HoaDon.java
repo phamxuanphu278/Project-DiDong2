@@ -20,17 +20,7 @@ public class HoaDon {
         this.maHoaDon = maHoaDon;
     }
 
-    public HoaDon(String tenSP, int soLuong, int giaSP, String tenKH, String numberPhone, String adress) {
-        this.tenSP = tenSP;
-        this.soLuong = soLuong;
-        this.giaSP = giaSP;
-        this.tenKH = tenKH;
-        this.numberPhone = numberPhone;
-        this.adress = adress;
-    }
-
-    public HoaDon(String maHoaDon, String tenSP, int soLuong, int giaSP, String tenKH, String numberPhone, String adress) {
-        this.maHoaDon = maHoaDon;
+    public HoaDon(String tenSP, int giaSP, int soLuong, String tenKH, String numberPhone, String adress) {
         this.tenSP = tenSP;
         this.soLuong = soLuong;
         this.giaSP = giaSP;

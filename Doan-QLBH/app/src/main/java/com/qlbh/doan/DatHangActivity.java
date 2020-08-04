@@ -33,7 +33,6 @@ public class DatHangActivity extends AppCompatActivity {
     EditText edtDiaChi;
     SanPham sanpham;
     FirebaseManager database;
-    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +64,7 @@ public class DatHangActivity extends AppCompatActivity {
                     database.themHoaDon(datHang(), new FirebaseManager.IListener() {
                         @Override
                         public void onSuccess() {
-                            Toast.makeText(DatHangActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DatHangActivity.this, "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(DatHangActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }
@@ -91,9 +90,8 @@ public class DatHangActivity extends AppCompatActivity {
     }
     public void getData(){
         sanpham = (SanPham) getIntent().getSerializableExtra("dathang");
-//        i = sanpham.getmMaSP();
         edtTenSP.setText(sanpham.getmTenSP());
-        edtGiaSP.setText(String.valueOf(sanpham.getmGiaban()));
+        edtGiaSP.setText(String.valueOf(sanpham.getmGiaban()) + "$");
     }
 
     private HoaDon datHang(){

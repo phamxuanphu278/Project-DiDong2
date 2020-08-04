@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,12 +36,16 @@ public class HomeActivity extends AppCompatActivity {
     FirebaseManager dbmanager;
     ListView lv;
     Spinner spn;
+    Button btnTimKiem;
+    EditText edtTimSp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         lv = findViewById(R.id.listView_home);
         spn = findViewById(R.id.spinnerDM);
+        btnTimKiem = findViewById(R.id.btnTimSP);
+        edtTimSp = findViewById(R.id.edtTimSP);
         dbmanager = new FirebaseManager(this);
         displaySP();
         loadSpinner();
@@ -52,7 +58,12 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        btnTimKiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timSanPham();
+            }
+        });
         spn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -68,6 +79,23 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void timSanPham(){
+        String keyword = edtTimSp.getText().toString();
+        ArrayList<SanPham> temp = new ArrayList<>();
+        if(keyword.isEmpty()){
+            displaySP();
+        }else {
+            for (SanPham sp : arraySanpham){
+                if(sp.getmTenSP().toLowerCase().trim().contains(keyword.trim().toLowerCase())){
+                    temp.add(sp);
+                }
+            }
+            arraySanpham = temp;
+            adapter = new SanPhamAdapter(this, R.layout.list_item_sanpham, arraySanpham);
+            lv.setAdapter(adapter);
+
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

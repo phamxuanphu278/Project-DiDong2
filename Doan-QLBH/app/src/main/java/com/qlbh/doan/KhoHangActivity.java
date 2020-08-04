@@ -29,6 +29,7 @@ public class KhoHangActivity extends AppCompatActivity {
     TextView txtTongGiaTriHH;
     EditText edtTimSP;
     Button btnTimSP;
+    Button btnHienThiSP;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class KhoHangActivity extends AppCompatActivity {
         txtTongGiaTriHH = findViewById(R.id.txtTongGia);
         edtTimSP = findViewById(R.id.edtTimSP);
         btnTimSP = findViewById(R.id.btnTimSP);
+        btnHienThiSP = findViewById(R.id.btnHienThi);
         dbmanager = new FirebaseManager(this);
         displaySP();
         btnTimSP.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +48,12 @@ public class KhoHangActivity extends AppCompatActivity {
                 timSanPham();
             }
         });
-
+        btnHienThiSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displaySP();
+            }
+        });
     }
     public void displaySP(){
         dbmanager.loadSanPham(new FirebaseManager.IListener() {
@@ -57,7 +64,7 @@ public class KhoHangActivity extends AppCompatActivity {
                 adapter = new KhoHangAdapter(KhoHangActivity.this, R.layout.list_item_khohang, arraySanpham);
                 lv.setAdapter(adapter);
                 txtTongSoLuong.setText(dbmanager.getTongSoLuongHangHoa()+"");
-                txtTongGiaTriHH.setText(dbmanager.getTongGiaTriHangHoa() + "");
+                txtTongGiaTriHH.setText(dbmanager.getTongGiaTriHangHoa() + " $");
             }
 
             @Override

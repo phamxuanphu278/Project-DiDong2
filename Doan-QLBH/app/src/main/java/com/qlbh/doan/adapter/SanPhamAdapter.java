@@ -39,7 +39,7 @@ public class SanPhamAdapter extends ArrayAdapter<SanPham> {
             Glide.with(getContext()).load(sanpham.getImgURL()).into(imgHinhdaidien);
             txtTen.setText(sanpham.getmTenSP());
             txtSoluong.setText(String.valueOf(sanpham.getmSoLuong()));
-            txtGia.setText(String.valueOf(sanpham.getmGiaban()));
+            txtGia.setText(String.valueOf(sanpham.getmGiaban()) + "$");
             txtDanhmuc.setText(sanpham.getmDanhMuc());
         }
         return view;

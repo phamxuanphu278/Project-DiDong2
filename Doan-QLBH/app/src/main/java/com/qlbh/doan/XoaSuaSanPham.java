@@ -20,7 +20,6 @@ import android.widget.Toast;
 import android.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
-import com.qlbh.doan.database.DatabaseManager;
 import com.qlbh.doan.database.FirebaseManager;
 import com.qlbh.doan.model.DanhMuc;
 import com.qlbh.doan.model.SanPham;
@@ -29,7 +28,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 public class XoaSuaSanPham extends AppCompatActivity {
     SanPham sanpham;

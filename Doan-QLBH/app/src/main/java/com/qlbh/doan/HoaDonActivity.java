@@ -59,8 +59,6 @@ public class HoaDonActivity extends AppCompatActivity {
                 }).setNegativeButton("HỦY ĐƠN", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Intent intent = new Intent(HoaDonActivity.this, HoaDonActivity.class);
-                        startActivity(intent);
                         dbManager.huyDonHang(arrHoaDon.get(position).getMaHoaDon(), new FirebaseManager.IListener() {
                             @Override
                             public void onSuccess() {

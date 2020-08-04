@@ -248,6 +248,7 @@ public class FirebaseManager {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 HoaDon hoaDon;
+                arrayHoaDon = new ArrayList<HoaDon>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     hoaDon = ds.getValue(HoaDon.class);
                     arrayHoaDon.add(hoaDon);
@@ -261,13 +262,6 @@ public class FirebaseManager {
                 listener.onFail();
             }
         });
-    }
-    public int getTongHoaDon() {
-        int tongHoaDon = 0;
-        for (SanPham sp : arraySanpham){
-            tongHoaDon = (sp.getmSoLuong() * sp.getmGiaban());
-        }
-        return tongHoaDon;
     }
     public void themHoaDon(HoaDon hoaDon,final IListener listener){
         showLoading(true);

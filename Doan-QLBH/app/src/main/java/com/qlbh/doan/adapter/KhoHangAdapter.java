@@ -31,7 +31,7 @@ public class KhoHangAdapter extends ArrayAdapter<SanPham> {
             TextView txtGiaSP = view.findViewById(R.id.txtGiaSP);
             TextView txtSoluongSP = view.findViewById(R.id.txtSoluong);
             txtTenSP.setText(sanpham.getmTenSP());
-            txtGiaSP.setText(String.valueOf(sanpham.getmGiaban()));
+            txtGiaSP.setText(String.valueOf(sanpham.getmGiaban()) + "$");
             txtSoluongSP.setText(String.valueOf(sanpham.getmSoLuong()));
         }
         return view;
