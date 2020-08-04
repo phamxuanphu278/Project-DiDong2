@@ -64,7 +64,7 @@ public class KhoHangActivity extends AppCompatActivity {
                 adapter = new KhoHangAdapter(KhoHangActivity.this, R.layout.list_item_khohang, arraySanpham);
                 lv.setAdapter(adapter);
                 txtTongSoLuong.setText(dbmanager.getTongSoLuongHangHoa()+"");
-                txtTongGiaTriHH.setText(dbmanager.getTongGiaTriHangHoa() + " $");
+                txtTongGiaTriHH.setText(dbmanager.getTongGiaTriHangHoa() + "$");
             }
 
             @Override

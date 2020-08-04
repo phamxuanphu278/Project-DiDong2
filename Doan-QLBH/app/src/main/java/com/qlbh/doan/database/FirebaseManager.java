@@ -31,6 +31,7 @@ public class FirebaseManager {
     public static final String SAN_PHAM = "SAN_PHAM";
     public static final String HOA_DON = "HOA_DON";
     public static final String USER = "USER";
+    public static final String ADMIN = "ADMIN";
     private Context context;
     DatabaseReference mDatabase;
     FirebaseStorage storage;
@@ -340,7 +341,6 @@ public class FirebaseManager {
             }
         });
     }
-
 
     public interface IListener{
         void onSuccess();

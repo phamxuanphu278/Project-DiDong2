@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess() {
                                 Toast.makeText(RegisterActivity.this, "Đăng ký thành công tài khoản", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                                 startActivity(intent);
                                 clearForm();
