@@ -262,7 +262,13 @@ public class FirebaseManager {
             }
         });
     }
-
+    public int getTongHoaDon() {
+        int tongHoaDon = 0;
+        for (SanPham sp : arraySanpham){
+            tongHoaDon = (sp.getmSoLuong() * sp.getmGiaban());
+        }
+        return tongHoaDon;
+    }
     public void themHoaDon(HoaDon hoaDon,final IListener listener){
         showLoading(true);
         String id = mDatabase.child(HOA_DON).push().getKey();

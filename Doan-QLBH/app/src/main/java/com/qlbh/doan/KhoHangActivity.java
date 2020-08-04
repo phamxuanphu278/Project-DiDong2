@@ -14,7 +14,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.qlbh.doan.adapter.KhoHangAdapter;
-import com.qlbh.doan.database.DatabaseManager;
 import com.qlbh.doan.database.FirebaseManager;
 import com.qlbh.doan.model.SanPham;
 
@@ -44,7 +43,6 @@ public class KhoHangActivity extends AppCompatActivity {
         btnTimSP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                arraySanpham.clear();
                 timSanPham();
             }
         });

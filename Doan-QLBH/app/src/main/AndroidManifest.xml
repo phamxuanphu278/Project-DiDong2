@@ -17,9 +17,6 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".DatHangActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".SamsungActivity" />
-        <activity android:name=".IphoneActivity" />
-        <activity android:name=".HuaweiActivity" />
         <activity android:name=".ProductInformation" />
         <activity android:name=".KhoHangActivity" />
         <activity android:name=".XoaSuaSanPham"

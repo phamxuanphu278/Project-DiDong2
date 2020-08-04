@@ -34,7 +34,7 @@ public class HoaDonAdapter extends ArrayAdapter<HoaDon> {
             TextView txtSoDT = view.findViewById(R.id.txtSoDT);
             TextView txtDiaChi = view.findViewById(R.id.txtDiaChi);
             TextView txtTongTien = view.findViewById(R.id.txtTongtien);
-            txtMaHD.setText("MAHD" + hoaDon.getMaHoaDon());
+            txtMaHD.setText("MAHD" + String.valueOf(position+1));
             txtTenSP.setText(hoaDon.getTenSP());
             txtGiaSP.setText(String.valueOf(hoaDon.getGiaSP()));
             txtSoluongSP.setText(String.valueOf(hoaDon.getSoLuong()));
