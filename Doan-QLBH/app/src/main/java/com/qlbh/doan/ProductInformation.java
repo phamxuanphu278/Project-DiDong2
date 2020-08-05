@@ -24,7 +24,6 @@ public class ProductInformation extends AppCompatActivity {
     ImageView imgAvatar;
     Button btnBack;
     Button btnOrder;
-    DatabaseManager db;
     TextView spn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +36,6 @@ public class ProductInformation extends AppCompatActivity {
         imgAvatar = findViewById(R.id.imgHinh_EditSP);
         btnBack = findViewById(R.id.btnBack);
         btnOrder = findViewById(R.id.btnShopping);
-        db = new DatabaseManager(this);
         getData();
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

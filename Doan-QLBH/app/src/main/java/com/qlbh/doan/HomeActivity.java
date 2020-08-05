@@ -168,12 +168,10 @@ public class HomeActivity extends AppCompatActivity {
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
                 spn.setAdapter(dataAdapter);
             }
-
             @Override
             public void onFail() {
 
             }
         });
-
     }
 }

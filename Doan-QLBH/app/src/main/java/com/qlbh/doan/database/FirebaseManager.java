@@ -191,13 +191,11 @@ public class FirebaseManager {
     }
 
     public void loadSanPham(final IListener listener){
-        //Bắt đầu gọi dữ liệu
         showLoading(true);
         arraySanpham.clear();
         mDatabase.child(SAN_PHAM).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //Hứng dữ liệu khi firebase trả về
                 SanPham sanPham;
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     sanPham = ds.getValue(SanPham.class);
