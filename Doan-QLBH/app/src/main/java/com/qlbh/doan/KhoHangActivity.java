@@ -66,14 +66,10 @@ public class KhoHangActivity extends AppCompatActivity {
                 txtTongSoLuong.setText(dbmanager.getTongSoLuongHangHoa()+"");
                 txtTongGiaTriHH.setText(dbmanager.getTongGiaTriHangHoa() + "$");
             }
-
             @Override
             public void onFail() {
-
             }
         });
-
-
     }
     public void timSanPham(){
         String keyword = edtTimSP.getText().toString();
@@ -89,7 +85,6 @@ public class KhoHangActivity extends AppCompatActivity {
             arraySanpham = temp;
             adapter = new KhoHangAdapter(this, R.layout.list_item_khohang, arraySanpham);
             lv.setAdapter(adapter);
-
         }
     }
     @Override

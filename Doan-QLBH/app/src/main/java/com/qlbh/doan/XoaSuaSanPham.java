@@ -75,7 +75,6 @@ public class XoaSuaSanPham extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 danhmucchon = spn.getSelectedItem().toString();
-
                 sanpham.setmTenSP(edtTen.getText().toString());
                 sanpham.setmDanhMuc(danhmucchon);
                 sanpham.setmSoLuong(Integer.parseInt(edtSoluong.getText().toString()));
@@ -93,17 +92,14 @@ public class XoaSuaSanPham extends AppCompatActivity {
                                     startActivity(intent);
                                     Toast.makeText(XoaSuaSanPham.this, "Sửa sản phẩm thành công!", Toast.LENGTH_SHORT).show();
                                 }
-
                                 @Override
                                 public void onFail() {
 
                                 }
                             });
                         }
-
                         @Override
                         public void onFail() {
-
                         }
                     });
                 }else {
@@ -114,16 +110,12 @@ public class XoaSuaSanPham extends AppCompatActivity {
                             startActivity(intent);
                             Toast.makeText(XoaSuaSanPham.this, "Sửa sản phẩm thành công!", Toast.LENGTH_SHORT).show();
                         }
-
                         @Override
                         public void onFail() {
 
                         }
                     });
                 }
-
-
-
             }
         });
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +147,6 @@ public class XoaSuaSanPham extends AppCompatActivity {
             }
         });
         btnCamera.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -163,7 +154,6 @@ public class XoaSuaSanPham extends AppCompatActivity {
             }
         });
         btnFolder.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 Intent in = new Intent(Intent.ACTION_PICK);

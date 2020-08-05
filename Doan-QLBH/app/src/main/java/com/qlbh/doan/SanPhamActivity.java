@@ -67,13 +67,10 @@ public class SanPhamActivity extends AppCompatActivity {
                 adapter = new SanPhamAdapter(SanPhamActivity.this, R.layout.list_item_sanpham, arraySanpham);
                 lv.setAdapter(adapter);
             }
-
             @Override
             public void onFail() {
 
             }
         });
-
-
     }
 }
