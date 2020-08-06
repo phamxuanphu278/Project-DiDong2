@@ -154,14 +154,8 @@ public class ThemSanPham extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==REQUEST_CODE_CAMERA&&resultCode==RESULT_OK & data!=null){
-            imgUri = data.getData();
-            try {
-                InputStream ipstream = getContentResolver().openInputStream(imgUri);
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 imgHinh.setImageBitmap(bitmap);
-            }catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
         }
         if (requestCode==REQUEST_CODE_FOLDER&&resultCode==RESULT_OK & data!=null){
             imgUri = data.getData();
