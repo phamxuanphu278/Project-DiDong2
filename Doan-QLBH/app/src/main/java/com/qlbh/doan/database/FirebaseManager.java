@@ -39,11 +39,8 @@ public class FirebaseManager {
     ArrayList<DanhMuc> arrDM;
     ArrayList<SanPham> arraySanpham;
     ArrayList<HoaDon> arrayHoaDon;
-    private ProgressDialog dialog;
     public FirebaseManager(Context context) {
         this.context = context;
-        dialog = new ProgressDialog(context);
-        dialog.setMessage("Đang tải...");
         mDatabase = FirebaseDatabase.getInstance().getReference();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -51,27 +48,12 @@ public class FirebaseManager {
         arraySanpham = new ArrayList<>();
         arrayHoaDon = new ArrayList<>();
     }
-
-    public void showLoading(boolean isShow){
-        if(dialog != null){
-            if(isShow){
-                dialog.show();
-            }else {
-                if (dialog.isShowing()) {
-                    dialog.dismiss();
-                }
-            }
-        }
-    }
-
     public void themDanhMuc(DanhMuc danhMuc, final IListener listener){
-        showLoading(true);
         String id = mDatabase.child(DANH_MUC).push().getKey();
         danhMuc.setMaDM(id);
         mDatabase.child(DANH_MUC).child(danhMuc.getMaDM()).setValue(danhMuc).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                showLoading(false);
                 listener.onSuccess();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -83,7 +65,6 @@ public class FirebaseManager {
     }
 
     public void loadDSDanhMuc(final IListener listener){
-        showLoading(true);
         mDatabase.child(DANH_MUC).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -94,7 +75,6 @@ public class FirebaseManager {
                     arrDM.add(danhMuc);
                 }
                 listener.onSuccess();
-                showLoading(false);
             }
 
             @Override
@@ -105,12 +85,10 @@ public class FirebaseManager {
     }
 
     public void xoaDanhMuc(String id, final IListener listener){
-        showLoading(true);
         mDatabase.child(DANH_MUC).child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 listener.onSuccess();
-                showLoading(false);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -121,7 +99,6 @@ public class FirebaseManager {
     }
 
     public void uploadFile(Uri uri, final IListenerUploadFile listener){
-        showLoading(true);
         final StorageReference reference = storageReference.child("Anh/" + UUID.randomUUID().toString());
         reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -135,7 +112,6 @@ public class FirebaseManager {
                         listener.onSuccess(imgURL);
                     }
                 });
-                showLoading(false);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -146,7 +122,6 @@ public class FirebaseManager {
     }
 
     public void themSanPham(final SanPham sp, Uri uriImg, final IListener listener){
-        showLoading(true);
         uploadFile(uriImg, new IListenerUploadFile() {
             @Override
             public void onSuccess(String url) {
@@ -164,7 +139,6 @@ public class FirebaseManager {
                         listener.onFail();
                     }
                 });
-                showLoading(false);
             }
 
             @Override
@@ -175,12 +149,10 @@ public class FirebaseManager {
     }
 
     public void updateSanPham(String id, SanPham sanPham, final IListener listener){
-        showLoading(true);
         mDatabase.child(SAN_PHAM).child(id).setValue(sanPham).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 listener.onSuccess();
-                showLoading(false);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -191,7 +163,6 @@ public class FirebaseManager {
     }
 
     public void loadSanPham(final IListener listener){
-        showLoading(true);
         arraySanpham.clear();
         mDatabase.child(SAN_PHAM).addValueEventListener(new ValueEventListener() {
             @Override
@@ -202,7 +173,6 @@ public class FirebaseManager {
                     arraySanpham.add(sanPham);
                 }
                 listener.onSuccess();
-                showLoading(false);
             }
 
             @Override
@@ -213,12 +183,10 @@ public class FirebaseManager {
     }
 
     public void xoaSanPham(String id, final IListener listener){
-        showLoading(true);
         mDatabase.child(SAN_PHAM).child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 listener.onSuccess();
-                showLoading(false);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -243,7 +211,6 @@ public class FirebaseManager {
         return tongSoLuong;
     }
     public void loadHoaDon(final IListener listener){
-        showLoading(true);
         arrayHoaDon.clear();
         mDatabase.child(HOA_DON).addValueEventListener(new ValueEventListener() {
             @Override
@@ -255,7 +222,6 @@ public class FirebaseManager {
                     arrayHoaDon.add(hoaDon);
                 }
                 listener.onSuccess();
-                showLoading(false);
             }
 
             @Override
@@ -266,14 +232,12 @@ public class FirebaseManager {
     }
 
     public void themHoaDon(HoaDon hoaDon,final IListener listener){
-        showLoading(true);
         String id = mDatabase.child(HOA_DON).push().getKey();
         hoaDon.setMaHoaDon(id);
         mDatabase.child(HOA_DON).child(hoaDon.getMaHoaDon()).setValue(hoaDon).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 listener.onSuccess();
-                showLoading(false);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -284,12 +248,10 @@ public class FirebaseManager {
     }
 
     public void huyDonHang(String id, final IListener listener){
-        showLoading(true);
         mDatabase.child(HOA_DON).child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 listener.onSuccess();
-                showLoading(false);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -300,14 +262,12 @@ public class FirebaseManager {
     }
 
     public void registerUser(Users users, final IListener listener){
-        showLoading(true);
         String id = mDatabase.child(USER).push().getKey();
         users.setId(id);
         mDatabase.child(USER).child(users.getId()).setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 listener.onSuccess();
-                showLoading(false);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -318,7 +278,6 @@ public class FirebaseManager {
     }
 
     public void checkLogin(final String username, final String password, final IListener listener){
-        showLoading(true);
         mDatabase.child(USER).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -330,7 +289,6 @@ public class FirebaseManager {
                         break;
                     }
                 }
-                showLoading(false);
             }
 
             @Override
@@ -354,24 +312,15 @@ public class FirebaseManager {
         return arraySanpham;
     }
 
-    public void setArraySanpham(ArrayList<SanPham> arraySanpham) {
-        this.arraySanpham = arraySanpham;
-    }
 
     public ArrayList<DanhMuc> getArrDM() {
         return arrDM;
     }
 
-    public void setArrDM(ArrayList<DanhMuc> arrDM) {
-        this.arrDM = arrDM;
-    }
 
     public ArrayList<HoaDon> getArrayHoaDon() {
         return arrayHoaDon;
     }
 
-    public void setArrayHoaDon(ArrayList<HoaDon> arrayHoaDon) {
-        this.arrayHoaDon = arrayHoaDon;
-    }
 }
 

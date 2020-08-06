@@ -197,13 +197,6 @@ public class XoaSuaSanPham extends AppCompatActivity {
             }
         });
     }
-    public byte[] ConverttoArrayByte(ImageView img){
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) img.getDrawable();
-        Bitmap bitmap = bitmapDrawable.getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        return stream.toByteArray();
-    }
     public void getData(){
         if (getIntent().getExtras()!=null){
             sanpham = (SanPham) getIntent().getSerializableExtra("Edit");

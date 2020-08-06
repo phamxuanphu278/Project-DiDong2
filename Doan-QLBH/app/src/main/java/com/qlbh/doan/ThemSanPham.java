@@ -146,20 +146,22 @@ public class ThemSanPham extends AppCompatActivity {
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
                 spn.setAdapter(dataAdapter);
             }
-
             @Override
             public void onFail() {
-
             }
         });
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==REQUEST_CODE_CAMERA&&resultCode==RESULT_OK & data!=null){
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            imgHinh.setImageBitmap(bitmap);
-
+            imgUri = data.getData();
+            try {
+                InputStream ipstream = getContentResolver().openInputStream(imgUri);
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                imgHinh.setImageBitmap(bitmap);
+            }catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         if (requestCode==REQUEST_CODE_FOLDER&&resultCode==RESULT_OK & data!=null){
             imgUri = data.getData();
@@ -172,12 +174,5 @@ public class ThemSanPham extends AppCompatActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
-    public byte[] ConverttoArrayByte(ImageView img){
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) img.getDrawable();
-        Bitmap bitmap = bitmapDrawable.getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        return stream.toByteArray();
     }
 }
