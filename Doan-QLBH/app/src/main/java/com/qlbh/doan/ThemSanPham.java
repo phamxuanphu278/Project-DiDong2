@@ -32,8 +32,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
+import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class ThemSanPham extends AppCompatActivity {
@@ -67,12 +70,14 @@ public class ThemSanPham extends AppCompatActivity {
         edtGiaca = findViewById(R.id.txtGiaca_ThemSP);
         edtMotaSP = findViewById(R.id.txtDescription);
         db = new FirebaseManager(this);
+        requestRuntimePermission();
         loadSpinner();
         btnSave.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
                 danhmucchon = spn.getSelectedItem().toString();
+//                edtTenSP.getText().toString(), danhmucchon, Integer.parseInt(edtSoluong.getText().toString()), Integer.parseInt(edtGiaca.getText().toString()), edtMotaSP.getText().toString(), ConverttoArrayByte(imgHinh)
                 SanPham sp = new SanPham();
                 sp.setmTenSP(edtTenSP.getText().toString());
                 sp.setmDanhMuc(danhmucchon);
@@ -126,7 +131,17 @@ public class ThemSanPham extends AppCompatActivity {
         });
     }
 
-
+    public void requestRuntimePermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE}, 22); //ACCESS_FINE_LOCATION
+            }
+        }
+    }
 
 
     public void clearForm(){
@@ -146,16 +161,20 @@ public class ThemSanPham extends AppCompatActivity {
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
                 spn.setAdapter(dataAdapter);
             }
+
             @Override
             public void onFail() {
+
             }
         });
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode==REQUEST_CODE_CAMERA&&resultCode==RESULT_OK & data!=null){
-                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                imgHinh.setImageBitmap(bitmap);
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            imgHinh.setImageBitmap(bitmap);
+
         }
         if (requestCode==REQUEST_CODE_FOLDER&&resultCode==RESULT_OK & data!=null){
             imgUri = data.getData();
@@ -168,5 +187,12 @@ public class ThemSanPham extends AppCompatActivity {
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+    public byte[] ConverttoArrayByte(ImageView img){
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) img.getDrawable();
+        Bitmap bitmap = bitmapDrawable.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
     }
 }
